@@ -1,0 +1,20 @@
+spring:  
+  project:
+     name: crud-graphql
+     version: 1.0
+     description: CRUD With GraphQL
+  server:
+     port: 8080     
+  datasource:
+    url: jdbc:h2:mem:localhost/myDB
+    username: 
+    password:   
+  h2:
+    console:
+      enabled: true         
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        show_sql: true
+        ddl-auto: create-drop                     

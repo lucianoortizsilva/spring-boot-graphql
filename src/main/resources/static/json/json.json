@@ -1,0 +1,27 @@
+{findAllPerson{
+	id,name,age,dtBirth,genre
+	}
+}
+
+mutation{
+  createPerson(person: {
+    	name:"Luciano Ortiz",
+       age:34,
+   dtBirth:"2018-08-24",
+     genre: MALE
+  }) 
+}
+
+mutation{
+  updatePerson(person: {
+  		  id:1,
+    	name:"Luciano Ortiz",
+       age:34,
+   dtBirth:"2018-08-24",
+     genre: MALE
+  }) 
+}
+
+mutation{
+  deletePerson(id:2)      
+}
