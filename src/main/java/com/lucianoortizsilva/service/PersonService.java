@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lucianoortizsilva.exception.GraphQLException;
 import com.lucianoortizsilva.model.Person;
 
 import io.leangen.graphql.annotations.GraphQLArgument;
@@ -29,9 +30,10 @@ public class PersonService {
 
 	@GraphQLMutation(name = "updatePerson")
 	public Person update(@GraphQLArgument(name = "person") final Person person) {
-		final Person p = this.repository.getOne(person.getId());
+		final Person p = this.repository.findOne(person.getId());
 		if (p == null) {
-			return null;
+			throw new GraphQLException("person_not_found",
+					new StringBuilder("Nao existe uma person com o id informado: ").append(person.getId()).toString());
 		} else {
 			p.setAge(person.getAge());
 			p.setName(person.getName());
@@ -43,8 +45,10 @@ public class PersonService {
 
 	@GraphQLMutation(name = "deletePerson")
 	public void delete(@GraphQLArgument(name = "id") final Long id) {
-		final Person p = this.repository.getOne(id);
-		if (p != null) {
+		final Person p = this.repository.findOne(id);
+		if (p == null) {
+			throw new GraphQLException("person_not_found", new StringBuilder("Nao existe uma person com o id informado: ").append(id).toString());
+		} else {
 			this.repository.delete(id);
 		}
 	}
