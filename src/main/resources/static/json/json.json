@@ -1,25 +1,37 @@
-{findAllPerson{
-	id,name,age,dtBirth,genre
-	}
+query {
+  findAllPerson {
+    id
+    name
+    dtBirth
+    age
+    genre
+  }
 }
 
-mutation{
-  createPerson(person: {
-    	name:"Luciano Ortiz",
-       age:34,
-   dtBirth:"2018-08-24",
-     genre: MALE
-  }) 
+mutation {
+  createPerson (
+    person: {
+      name: "Luciano"
+      dtBirth: "1984-01-31"
+      genre: MALE
+      age: 36
+    }) {
+      id, name, age, genre
+    } 
 }
 
-mutation{
+mutation {
   updatePerson(person: {
-  		  id:1,
-    	name:"Luciano Ortiz",
-       age:34,
-   dtBirth:"2018-08-24",
-     genre: MALE
-  }) 
+  		  id: 1,
+    	name:"Ortiz",
+       age: 99,
+   dtBirth:"2020-09-18"
+  }) {
+    id
+    name 
+    age
+    dtBirth    
+  }
 }
 
 mutation{
