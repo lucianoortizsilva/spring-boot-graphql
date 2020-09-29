@@ -1,4 +1,4 @@
-### Stack
+### Tech Stack
 - Java
 - Maven
 - [GraphQL](https://github.com/leangen/graphql-spqr) 
