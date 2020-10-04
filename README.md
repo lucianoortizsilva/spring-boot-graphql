@@ -1,5 +1,6 @@
 ### Tech Stack
 - Java
+- Spring Boot
 - Maven
 - [GraphQL](https://github.com/leangen/graphql-spqr) 
 
